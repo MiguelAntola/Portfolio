@@ -3,8 +3,8 @@
 ### Languages: R, STATA, MATLAB
 
 # Education
-- Masters of Statistics in Econometrics, MS | University of Utah (2024-2025)
-- Business Economics and Analytics, BS| University of Utah (2022-2024)
+- Masters of Statistics in Econometrics, MS|University of Utah (2024-2025)
+- Business Economics and Analytics, BS|University of Utah (2022-2024)
 
 # Work Experience
 Finance Intern @ Nicholas & Company
