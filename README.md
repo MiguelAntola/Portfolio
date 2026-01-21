@@ -1,6 +1,6 @@
 # Education
-Masters of Statistics in Econometrics, Graduate
-Business Economics and Analytics, Undergraduate
+- Masters of Statistics in Econometrics, Graduate
+- Business Economics and Analytics, Undergraduate
 
 ### Work Experience
 Finance Intern @ Nicholas & Company
