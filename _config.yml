@@ -1,5 +1,5 @@
 Title: Miguel Antola
 Logo: /img/headshot.JPEG
-#description :text below image
-#show_downloads: true
+description :text below image
+show_downloads: true
 theme: jekyll-theme-minimal
