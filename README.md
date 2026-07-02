@@ -8,7 +8,7 @@ Business Economics and Analytics, BS|University of Utah (2022-2024)
 
 # Work Experience
 Finance Intern @ Nicholas & Company
-- Revised old customer contracts finding inefficiencies in the process and saved $30,000.
+- Revised old customer contracts finding inefficiencies by using economic methods and saved $30,000 in the process.
 
 # Projects
 Masters Project
