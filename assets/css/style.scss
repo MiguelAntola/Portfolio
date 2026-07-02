@@ -1,0 +1,20 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Make the main content wider */
+.wrapper {
+  width: 1100px;
+  max-width: 95%;
+}
+
+/* Make the content area wider */
+section {
+  width: 700px;
+}
+
+/* Keep the sidebar a reasonable width */
+header {
+  width: 270px;
+}
