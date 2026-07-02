@@ -12,6 +12,6 @@ Finance Intern @ Nicholas & Company
 
 ## Master's Project – UFC Prediction Model Using Markov Chains
 - Developed a Markov chain model to predict UFC fight outcomes.
-- Estimated transition probabilities from historical fight data.
+- Estimated transition probabilities from historical fight data.........
 📄 [View the full report](projects/Masters_Project.pdf)
   
