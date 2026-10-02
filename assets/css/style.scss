@@ -18,3 +18,19 @@ section {
 header {
   width: 270px;
 }
+
+/* Reduce vertical spacing */
+section h2 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+section p {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+section ul {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
