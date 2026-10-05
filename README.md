@@ -14,4 +14,6 @@ Master’s Project – UFC Prediction Model Using Markov Chains
 - Developed a Markov chain model to predict UFC fight outcomes.  
 - Estimated transition probabilities from historical fight data.  
 [View Project](./projects/Masters_Project.pdf){:target="_blank"}
+
+[View Project](./projects/arbitrage/){:target="_blank"}
   
