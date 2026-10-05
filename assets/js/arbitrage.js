@@ -210,3 +210,17 @@ for (
 //
 // The JavaScript version will eventually draw these
 // simulations onto a chart in index.html.
+
+// Make the simulation results available to index.html.
+window.arbitrageSimulation = {
+    parameters: {
+        startingBankroll,
+        averageStake,
+        stakeStd,
+        averageROI,
+        executionProbability,
+        numberOfRounds,
+        numberOfSimulations
+    },
+    allSimulations
+};
