@@ -211,6 +211,125 @@ for (
 // The JavaScript version will eventually draw these
 // simulations onto a chart in index.html.
 
+function drawChart() {
+
+    const traces = allSimulations.map((simulation) => ({
+        x: simulation.map((_, round) => round),
+        y: simulation,
+
+        type: "scattergl",
+        mode: "lines",
+
+        line: {
+            width: 1,
+            color: "rgba(30, 100, 180, 0.08)"
+        },
+
+        hoverinfo: "skip",
+        showlegend: false
+    }));
+
+
+    // Starting bankroll reference line
+
+    traces.push({
+        x: [0, numberOfRounds],
+        y: [startingBankroll, startingBankroll],
+
+        type: "scatter",
+        mode: "lines",
+
+        name: "Starting bankroll",
+
+        line: {
+            color: "#333",
+            width: 1.5,
+            dash: "dash"
+        },
+
+        hovertemplate:
+            "Starting bankroll: $%{y:,.0f}<extra></extra>"
+    });
+
+
+    const layout = {
+
+        margin: {
+            top: 30,
+            right: 30,
+            bottom: 60,
+            left: 70
+        },
+
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+
+        font: {
+            family: "Arial, sans-serif",
+            color: "#333"
+        },
+
+        title: {
+            text:
+                `${numberOfSimulations.toLocaleString()} Simulations ` +
+                `of Bankroll Over ${numberOfRounds} Rounds`
+        },
+
+        xaxis: {
+            title: {
+                text: "Round"
+            },
+
+            gridcolor: "#e5e7eb",
+            zeroline: false,
+
+            showline: true,
+            linecolor: "#d1d5db"
+        },
+
+        yaxis: {
+            title: {
+                text: "Bankroll"
+            },
+
+            tickprefix: "$",
+            tickformat: ",.0f",
+
+            gridcolor: "#e5e7eb",
+            zeroline: false,
+
+            showline: true,
+            linecolor: "#d1d5db"
+        },
+
+        hovermode: "x",
+
+        legend: {
+            orientation: "h",
+            y: -0.15,
+            x: 0
+        }
+    };
+
+
+    const config = {
+        responsive: true,
+        displayModeBar: false
+    };
+
+
+    Plotly.newPlot(
+        "bankrollChart",
+        traces,
+        layout,
+        config
+    );
+}
+
+
+drawChart();
+
+
 // Make the simulation results available to index.html.
 window.arbitrageSimulation = {
     parameters: {
@@ -222,5 +341,6 @@ window.arbitrageSimulation = {
         numberOfRounds,
         numberOfSimulations
     },
+
     allSimulations
 };
