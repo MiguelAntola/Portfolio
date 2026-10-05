@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbitrage Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        .parameters {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .parameter {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .parameter strong {
+            display: block;
+            margin-top: 4px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+        }
+
+        @media (max-width: 700px) {
+            .parameters {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Arbitrage Simulator</h1>
+    <p>
+        JavaScript translation of the current Python simulation.
+    </p>
+
+    <div class="parameters" id="parameters"></div>
+
+    <canvas id="bankrollChart"></canvas>
+
+    <script src="assets/js/arbitrage.js"></script>
+    <script>
+        const simulation = window.arbitrageSimulation;
+        const parametersElement = document.getElementById("parameters");
+        const canvas = document.getElementById("bankrollChart");
+        const ctx = canvas.getContext("2d");
+        const parameters = simulation.parameters;
+
+        const parameterLabels = [
+            ["Starting bankroll", `$${parameters.startingBankroll.toLocaleString()}`],
+            ["Average stake", `$${parameters.averageStake}`],
+            ["Stake standard deviation", `$${parameters.stakeStd}`],
+            ["Average ROI", `${parameters.averageROI * 100}%`],
+            ["Execution probability", `${parameters.executionProbability * 100}%`],
+            ["Rounds", parameters.numberOfRounds],
+            ["Simulations", parameters.numberOfSimulations.toLocaleString()]
+        ];
+
+        parameterLabels.forEach(([label, value]) => {
+            const div = document.createElement("div");
+            div.className = "parameter";
+            div.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+            parametersElement.appendChild(div);
+        });
+
+        function resizeCanvas() {
+            const ratio = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * ratio;
+            canvas.height = rect.height * ratio;
+            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+            drawChart(rect.width, rect.height);
+        }
+
+        function drawChart(width, height) {
+            const simulations = simulation.allSimulations;
+            const margin = { top: 30, right: 30, bottom: 50, left: 70 };
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
+
+            ctx.clearRect(0, 0, width, height);
+
+            let maxRounds = 0;
+            let maxBankroll = parameters.startingBankroll;
+            let minBankroll = parameters.startingBankroll;
+
+            simulations.forEach(path => {
+                maxRounds = Math.max(maxRounds, path.length - 1);
+                path.forEach(value => {
+                    maxBankroll = Math.max(maxBankroll, value);
+                    minBankroll = Math.min(minBankroll, value);
+                });
+            });
+
+            minBankroll = Math.min(0, minBankroll);
+            maxBankroll = Math.max(parameters.startingBankroll, maxBankroll);
+
+            const x = round => margin.left + (round / maxRounds) * chartWidth;
+            const y = value => margin.top +
+                ((maxBankroll - value) / (maxBankroll - minBankroll)) * chartHeight;
+
+            // Axes
+            ctx.strokeStyle = "#333";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(margin.left, margin.top);
+            ctx.lineTo(margin.left, height - margin.bottom);
+            ctx.lineTo(width - margin.right, height - margin.bottom);
+            ctx.stroke();
+
+            // Zero line
+            if (minBankroll < 0) {
+                ctx.strokeStyle = "#bbb";
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(margin.left, y(0));
+                ctx.lineTo(width - margin.right, y(0));
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Draw all simulation paths.
+            // This is the browser equivalent of:
+            // for simulation in all_simulations:
+            //     plt.plot(simulation)
+            ctx.strokeStyle = "rgba(30, 100, 180, 0.08)";
+            ctx.lineWidth = 1;
+
+            simulations.forEach(path => {
+                ctx.beginPath();
+
+                path.forEach((value, index) => {
+                    const px = x(index);
+                    const py = y(value);
+
+                    if (index === 0) {
+                        ctx.moveTo(px, py);
+                    } else {
+                        ctx.lineTo(px, py);
+                    }
+                });
+
+                ctx.stroke();
+            });
+
+            // Starting-bankroll line
+            ctx.strokeStyle = "#333";
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(margin.left, y(parameters.startingBankroll));
+            ctx.lineTo(width - margin.right, y(parameters.startingBankroll));
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Labels
+            ctx.fillStyle = "#333";
+            ctx.font = "12px Arial";
+            ctx.fillText("Bankroll", 10, margin.top);
+            ctx.fillText("Round", width / 2 - 20, height - 10);
+            ctx.fillText(`$${Math.round(maxBankroll).toLocaleString()}`, 8, margin.top + 5);
+            ctx.fillText(`$${Math.round(minBankroll).toLocaleString()}`, 8, height - margin.bottom);
+            ctx.fillText("0", margin.left - 4, height - margin.bottom + 20);
+            ctx.fillText(String(maxRounds), width - margin.right - 10, height - margin.bottom + 20);
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+    </script>
+</body>
+</html>
