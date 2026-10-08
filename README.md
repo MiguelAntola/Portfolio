@@ -15,5 +15,7 @@ Master’s Project – UFC Prediction Model Using Markov Chains
 - Estimated transition probabilities from historical fight data.  
 [View Project](./projects/Masters_Project.pdf){:target="_blank"}
 
+Gambler's Ruin - Arbitrage Betting Simulator
+[View Project](./projects/Gambler_s_Ruin.pdf){:target="_blank"}
 [View Project](./projects/arbitrage/){:target="_blank"}
   
