@@ -10,12 +10,18 @@ Finance Intern – Nicholas & Company
 - Revised old customer contracts, identified inefficiencies, and saved $30,000.
 
 ## Projects
-Master’s Project – UFC Prediction Model Using Markov Chains  
-- Developed a Markov chain model to predict UFC fight outcomes.  
-- Estimated transition probabilities from historical fight data.  
-[View Project](./projects/Masters_Project.pdf){:target="_blank"}
+### <b>Masters Project<b> - UFC Prediction Model Using Markov Chains
+- Language: R
+- Categorized fighters using 13 different skills models.
+- Estimated transition probabilities from historical fight data. 
+- Simulated bout outcomes of the top 11 fighters in the lightweight division.
 
-Gambler's Ruin - Arbitrage Betting Simulator
-[View Project](./projects/Gambler_s_Ruin.pdf){:target="_blank"}
-[View Project](./projects/arbitrage/){:target="_blank"}
+<a href="./projects/Masters_Project.pdf" target="_blank"> <img src="./img/finish_probs_11.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
+
+
+### <b>Gambler's Ruin<b> - Expected Value Forecasting
+- Language: Python
+- Created an arbitrage simulator that can calculate expected value given paramater inputs.
+
   
+<a href="./projects/Gambler_s_Ruin.pdf" target="_blank"> <img src="./img/Intermediate 10000 simulations.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
