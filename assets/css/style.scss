@@ -21,11 +21,12 @@ header {
 
 /* Circular profile picture */
 header img {
-  width: 300px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  margin-bottom: 15px;
 }
 
 /* Reduce vertical spacing */
@@ -47,6 +48,68 @@ section ul {
 header h1 {
   font-size: 30px;
 }
+
+.profile-links {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+/* Base profile icon styling */
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  object-fit: contain;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Prevent icons inheriting profile-photo styling */
+header .profile-icon {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+/* Individual icon sizes */
+.profile-icon.location-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.profile-icon.email-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.profile-icon.github-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.profile-icon.linkedin-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.profile-item a {
+  text-decoration: none;
+}
+
+.profile-item a:hover {
+  text-decoration: underline;
+} 
 
 /* Arbitrage simulation chart */
 #bankrollChart {
