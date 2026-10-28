@@ -25,3 +25,10 @@ Finance Intern – Nicholas & Company
 
   
 <a href="./projects/Gambler_s_Ruin.pdf" target="_blank"> <img src="./img/Intermediate 10000 simulations.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
+
+### <b>SQL & Tableau<b> - Credit Risk
+- Language: SQL & Tableau
+- Extracted credit risk metrics from SQL and built histograms and box plots in Tableau.
+
+<a href="./projects/SQL__Tableau" target="_blank"> <img src="./img/Credit Amount by Age and Risk.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
+
