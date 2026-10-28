@@ -30,5 +30,5 @@ Finance Intern – Nicholas & Company
 - Language: SQL & Tableau
 - Extracted credit risk metrics from SQL and built histograms and box plots in Tableau.
 
-<a href="./projects/SQL__Tableau" target="_blank"> <img src="./img/Credit Amount by Age and Risk.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
+<a href="./projects/SQL__Tableau.pdf" target="_blank"> <img src="./img/Credit Amount by Age and Risk.png" alt="Gambler's Ruin Simulator" width="75%"> </a>
 
